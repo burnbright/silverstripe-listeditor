@@ -22,7 +22,7 @@ class ListEditForm extends Form{
 		);
 		parent::__construct($controller, $name, $fields, $actions);
 		$this->setupEditingMode();
-		$singleton->extend('updateListEditForm');
+		$singleton->extend('updateListEditForm', $this);
 		//all fields are required
 		if(!$this->validator){
 			$this->setValidator(new RequiredFields(
@@ -46,7 +46,7 @@ class ListEditForm extends Form{
 
 	public function savenew($data, $form) {
 		$class = $this->list->dataClass();
-		$obj = new $class();
+		$obj = $this->list->newObject();
 		if($obj->canCreate(Member::currentUser())){
 			$form->saveInto($obj);
 			$obj->write();
