@@ -1,0 +1,17 @@
+{
+    "name": "burnbright/silverstripe-listeditor",
+    "description": "Front-end DataList create/edit/delete control.",
+    "type": "silverstripe-module",
+    "keywords": ["silverstripe", "frontend", "list", "datalist", "editor"],
+    "authors": [
+        {
+            "name": "Jeremy Shipman",
+            "email": "jeremy@burnbright.net"
+        }
+    ],
+    "require": {
+	"silverstripe/framework": "~3.1",
+     "extra": {
+        "installer-name": "listeditor"
+    }
+}
