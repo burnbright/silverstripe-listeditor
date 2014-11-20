@@ -52,13 +52,16 @@ class ListEditForm extends Form{
 			$obj->write();
 			$this->list->add($obj);
 			$form->sessionMessage("New ".strtolower($obj->i18n_singular_name())." has been added.", "good");
+		}else{
+			$form->sessionMessage("You do not have permission to create ".$obj->i18n_plural_name(), "bad");
 		}
 
 		return $this->controller->redirectBack();
 	}
 
 	public function save($data, $form){
-		if(isset($data['ID']) && $obj = $this->editableObject((int)$data['ID'])) {
+		$canedit = $obj->canEdit(Member::currentUser());
+		if($canedit && isset($data['ID']) && $obj = $this->editableObject((int)$data['ID'])) {
 			$form->saveInto($obj);
 			$obj->write();
 			$form->sessionMessage(strtolower($obj->i18n_singular_name())." has been updated.", "good");

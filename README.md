@@ -28,6 +28,10 @@ You could also edit on a per-instance basis by using the ListEditField's `setTem
 
 ## Troubleshooting
 
+### Add CRUD functions to your DataObject
+
+Make sure you implement the `canCreate` and `canEdit` and `canDelete` functions on your dataobject.
+
 ### Add/edit form redirects back without saving any changes
 
 You may have fields added that are failing validation. All fields are required by default in the ListEditForm.
